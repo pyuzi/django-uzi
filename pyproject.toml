@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-xdi"
-version = "0.4.1"
+version = "0.4.2"
 description = "xdi dependency injection adapter for django"
 authors = ["David Kyalo <davidmkyalo@gmail.com>"]
 license = "MIT"
