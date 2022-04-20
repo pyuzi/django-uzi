@@ -1,4 +1,4 @@
-# Sanic XDI
+# Django XDI
 
 
 [![PyPi version][pypi-image]][pypi-link]
