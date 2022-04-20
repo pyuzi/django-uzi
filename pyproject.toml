@@ -52,7 +52,7 @@ black = {version = "^22.3.0", allow-prereleases = true}
 
 
 [tool.pytest.ini_options]
-addopts = "--cov=sanic_xdi --cov-report html --cov-config pyproject.toml"
+addopts = "--cov=django_xdi --cov-report html --cov-config pyproject.toml"
 asyncio_mode="auto"
 
 
