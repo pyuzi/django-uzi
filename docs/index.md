@@ -1,4 +1,4 @@
-# Django XDI
+# Django Uzi
 
 
 [![PyPi version][pypi-image]][pypi-link]
@@ -7,16 +7,16 @@
 [![Coverage status][codecov-image]][codecov-link]
 
 
-`XDI` is a [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) library for Python.
+`Uzi` is a [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) library for Python.
 
 
 
 ## Installation
 
-Install from [PyPi](https://pypi.org/project/django-xdi/)
+Install from [PyPi](https://pypi.org/project/django-uzi/)
 
 ```
-pip install django-xdi
+pip install django-uzi
 ```
 
 ## Documentation
@@ -32,13 +32,13 @@ __This package is still in active development and should not be used in producti
 
 
 
-[docs-link]: https://pyxdi.github.io/django-xdi/
-[pypi-image]: https://img.shields.io/pypi/v/django-xdi.svg?color=%233d85c6
-[pypi-link]: https://pypi.python.org/pypi/django-xdi
-[pyversions-image]: https://img.shields.io/pypi/pyversions/django-xdi.svg
-[pyversions-link]: https://pypi.python.org/pypi/django-xdi
-[ci-image]: https://github.com/pyxdi/django-xdi/actions/workflows/workflow.yaml/badge.svg?event=push&branch=master
-[ci-link]: https://github.com/pyxdi/django-xdi/actions?query=workflow%3ACI%2FCD+event%3Apush+branch%3Amaster
-[codecov-image]: https://codecov.io/gh/pyxdi/django-xdi/branch/master/graph/badge.svg
-[codecov-link]: https://codecov.io/gh/pyxdi/django-xdi
+[docs-link]: https://pyuzi.github.io/django-uzi/
+[pypi-image]: https://img.shields.io/pypi/v/django-uzi.svg?color=%233d85c6
+[pypi-link]: https://pypi.python.org/pypi/django-uzi
+[pyversions-image]: https://img.shields.io/pypi/pyversions/django-uzi.svg
+[pyversions-link]: https://pypi.python.org/pypi/django-uzi
+[ci-image]: https://github.com/pyuzi/django-uzi/actions/workflows/workflow.yaml/badge.svg?event=push&branch=master
+[ci-link]: https://github.com/pyuzi/django-uzi/actions?query=workflow%3ACI%2FCD+event%3Apush+branch%3Amaster
+[codecov-image]: https://codecov.io/gh/pyuzi/django-uzi/branch/master/graph/badge.svg
+[codecov-link]: https://codecov.io/gh/pyuzi/django-uzi
 

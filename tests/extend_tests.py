@@ -2,7 +2,7 @@
 import pytest
 
 
-from django_xdi import inject
+from django_uzi import inject
 
 
 

@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "django-xdi"
-version = "0.4.2"
-description = "xdi dependency injection adapter for django"
+name = "django-uzi"
+version = "0.0.0"
+description = "uzi dependency injection adapter for django"
 authors = ["David Kyalo <davidmkyalo@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/pyxdi/django-xdi"
-documentation = "https://pyxdi.github.io/xdi"
+repository = "https://github.com/pyuzi/django-uzi"
+documentation = "https://pyuzi.github.io/uzi"
 keywords = [
     "dependency-injector",
     "dependency-injection",
@@ -16,10 +16,10 @@ keywords = [
     "IoC-Container",
     "service-injector",
     "injector",
-    "django-xdi",
+    "django-uzi",
     "IoC",
     "DI",
-    "XDI",
+    "Uzi",
 ]
 classifiers = [
     "Programming Language :: Python :: 3.9",
@@ -33,7 +33,7 @@ build-backend = "poetry.core.masonry.api"
 
 
 [tool.poetry.dependencies]
-xdi = "^0.4.2"
+uzi = "~0.0.0"
 python = "^3.9"
 typing-extensions = "^4.1.1"
 Django = "^4.0.4"
@@ -52,7 +52,7 @@ black = {version = "^22.3.0", allow-prereleases = true}
 
 
 [tool.pytest.ini_options]
-addopts = "--cov=django_xdi --cov-report html --cov-config pyproject.toml"
+addopts = "--cov=django_uzi --cov-report html --cov-config pyproject.toml"
 asyncio_mode="auto"
 
 

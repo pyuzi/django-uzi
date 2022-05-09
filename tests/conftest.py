@@ -3,13 +3,13 @@ import operator
 from unittest.mock import MagicMock, Mock, NonCallableMagicMock
 import pytest
 import typing as t
-from xdi import is_injectable
-from xdi.containers import Container
-from xdi.injectors import Injector
-from xdi.providers import Provider
+from uzi import is_injectable
+from uzi.containers import Container
+from uzi.injectors import Injector
+from uzi.providers import Provider
 
-from xdi._dependency import Dependency
-from xdi.scopes import Scope
+from uzi._dependency import Dependency
+from uzi.scopes import Scope
 
 
 
@@ -60,15 +60,15 @@ def MockContainer():
 
 
 @pytest.fixture
-def MockDependency():
-    def make(abstract=None, scope=None, **kw):
+def MockBinding():
+    def make(abstract=None, graph=None, **kw):
         mk = MagicMock(Dependency)
 
         if not abstract is None:
             kw['abstract'] = abstract
 
-        if not scope is None:
-            kw['scope'] = scope
+        if not graph is None:
+            kw['graph'] = graph
         
         kw.setdefault('is_async', False)
 
@@ -82,11 +82,11 @@ def MockDependency():
 
 
 @pytest.fixture
-def Mockinjector(MockScope):
-    def make(spec=Injector, *, scope=None, parent=True, **kw):
+def MockInjector(MockGraph):
+    def make(spec=Injector, *, graph=None, parent=True, **kw):
         mi: Injector = NonCallableMagicMock(spec, **kw)
         mi.__bool__.return_value = True
-        mi.scope = scope or MockScope()
+        mi.graph = graph or MockGraph()
         def mock_dep(k):
             if getattr(k, 'is_async', False):
                 # mi = Mock()
@@ -111,13 +111,13 @@ def Mockinjector(MockScope):
 
 
 @pytest.fixture
-def MockProvider(MockDependency):
+def MockProvider(MockBinding):
     def make(spec=Provider, **kw):
         mi: Provider = NonCallableMagicMock(spec, **kw)
         deps = {}
         def mock_dep(a, s):
             if not (a, s) in deps:
-                deps[a,s] = MockDependency(a, s, provider=mi)
+                deps[a,s] = MockBinding(a, s, provider=mi)
             return deps[a,s]
 
         mi.resolve = MagicMock(wraps=mock_dep)
@@ -132,7 +132,7 @@ def MockProvider(MockDependency):
 
 
 @pytest.fixture
-def MockScope(MockContainer, MockDependency):
+def MockGraph(MockContainer, MockBinding):
     def make(spec=Scope, *, parent=True, **kw):
         mi = NonCallableMagicMock(spec, **kw)
         mi.container = cm = MockContainer()
@@ -140,7 +140,7 @@ def MockScope(MockContainer, MockDependency):
         mi.__contains__ = MagicMock(operator.__contains__, wraps=lambda k: deps.get(k) or is_injectable(k)) 
         
         deps = {}
-        mi.__getitem__ = mi.find_local = Mock(wraps=lambda k: deps[k] if k in deps else deps.setdefault(k, MockDependency(abstract=k, scope=mi)))
+        mi.__getitem__ = mi.find_local = Mock(wraps=lambda k: deps[k] if k in deps else deps.setdefault(k, MockBinding(abstract=k, graph=mi)))
         mi.__setitem__ = Mock(wraps=lambda k, v: deps.__setitem__(k, v))
 
         if parent:
@@ -160,8 +160,8 @@ def mock_container(MockContainer):
 
 
 @pytest.fixture
-def mock_scope(MockScope):
-    return MockScope()
+def mock_graph(MockGraph):
+    return MockGraph()
 
 
 @pytest.fixture
@@ -171,8 +171,8 @@ def mock_provider(MockProvider):
 
 
 @pytest.fixture
-def mock_injector(Mockinjector, mock_scope):
-    return Mockinjector(scope=mock_scope)
+def mock_injector(MockInjector, mock_graph):
+    return MockInjector(graph=mock_graph)
 
 
 
